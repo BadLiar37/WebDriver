@@ -15,8 +15,8 @@ public class WebDriverTest {
         driver.manage().window().maximize();
         WebElement menuElement = new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/header/div/div/div[1]/div/ul/li[2]")));
-        String buttonText=menuElement.getText().trim();
-        Assertions.assertEquals(buttonText,"МУЖЧИНЫ");
+        String menuElementText=menuElement.getText().trim();
+        Assertions.assertEquals(menuElementText,"МУЖЧИНЫ");
         menuElement.click();
         WebElement checkboxItem =new WebDriverWait(driver,30)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@for, 'arrFilter_118_1717685296')]")));
