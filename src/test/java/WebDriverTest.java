@@ -1,4 +1,6 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,10 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverTest {
+    private ChromeDriver driver;
+    @BeforeEach
+    public  void browserSetUp(){
+         driver = new ChromeDriver();
+    }
 
     @Test
     public void webdriverTest(){
-        ChromeDriver driver = new ChromeDriver();
         driver.get("https://megatop.by/catalog/");
         driver.manage().window().maximize();
         WebElement menuElement = new WebDriverWait(driver, 30)
@@ -28,6 +34,12 @@ public class WebDriverTest {
         String popupButtonText=popupButton.getText().trim();
         Assertions.assertEquals(popupButtonText,"ПОКАЗАТЬ");
         popupButton.click();
-        driver.quit();
     }
+
+    @AfterEach
+    public void browserTearDown(){
+        driver.quit();
+        driver=null;
+    }
+
 }
