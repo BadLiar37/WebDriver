@@ -10,9 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverTest {
     private ChromeDriver driver;
+
     @BeforeEach
     public  void browserSetUp(){
-         driver = new ChromeDriver();
+        driver = new ChromeDriver();
     }
 
     @Test
